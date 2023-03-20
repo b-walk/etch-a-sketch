@@ -30,8 +30,7 @@ const resizeButton = document.querySelector('#resize-button');
 resizeButton.addEventListener('click', resize);
 function resize() {
     const gridContainer = document.querySelector('#grid-container');
-    let newSideLength = prompt('Enter desired side length below\nNumber cannot exceed 100', '');
-    newSideLength = +newSideLength;
+    let newSideLength = getSideLength();
     let gridItems = Array.from(document.querySelectorAll('#grid-container>div'));
     for (const gridItem of gridItems) {
         gridContainer.removeChild(gridItem);
@@ -46,5 +45,13 @@ function resize() {
         gridItem.addEventListener('mouseover', () => {
             gridItem.setAttribute('id', 'activeGridItem');
         })
+    }
+}
+function getSideLength() {
+    let newSideLength = +(prompt('Enter desired side length below\nNumber cannot exceed 100', ''));
+    if (!(isFinite(newSideLength)) || newSideLength > 100) {
+        return 100;
+    } else {
+        return newSideLength;
     }
 }
