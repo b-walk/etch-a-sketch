@@ -48,3 +48,7 @@ button {
     border: solid 1px black;
     background-color: black;
 }
+img {
+    height: 90px;
+    width: 290px;
+}
